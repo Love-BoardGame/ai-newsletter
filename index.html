@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainport Insider — 2026年6月</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #2a2520;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    /* ─── Header image ─── */
+    .header-image {
+      width: 100%;
+      display: block;
+      max-height: 240px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ─── Top meta ─── */
+    .meta {
+      text-align: center;
+      padding: 28px 24px 8px;
+      font-family: 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+    }
+    .meta .label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8a7e72;
+    }
+    .meta .issue {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: #b0a090;
+      margin-top: 4px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid #d8cfc4;
+      margin: 24px auto;
+      width: calc(100% - 48px);
+      max-width: 660px;
+    }
+
+    /* ─── Language toggle ─── */
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin: 0 auto 36px;
+      max-width: 260px;
+      border: 1px solid #c8bfb4;
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 13px;
+    }
+    .lang-toggle button {
+      flex: 1;
+      padding: 8px 0;
+      border: none;
+      background: transparent;
+      color: #8a7e72;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.18s, color 0.18s;
+    }
+    .lang-toggle button.active {
+      background: #c9a97a;
+      color: #fff;
+    }
+    .lang-toggle button:not(:last-child) {
+      border-right: 1px solid #c8bfb4;
+    }
+
+    /* ─── Content wrapper ─── */
+    .content {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    /* ─── Article edition ─── */
+    .edition { display: none; }
+    .edition.active { display: block; }
+
+    /* ─── Typography ─── */
+    .zh p, .zh .signoff {
+      font-family: 'Noto Serif TC', 'Songti SC', Georgia, serif;
+    }
+    .en p, .en .signoff {
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    p { margin-bottom: 1.45em; }
+
+    .section-break {
+      text-align: center;
+      margin: 2em 0;
+      color: #c0b0a0;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      font-family: Georgia, serif;
+    }
+
+    em { font-style: italic; }
+
+    .signoff {
+      margin-top: 3em;
+      padding-top: 1.6em;
+      border-top: 1px solid #d8cfc4;
+      font-family: 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      color: #7a6e64;
+      line-height: 1.65;
+    }
+    .signoff strong {
+      display: block;
+      color: #3a3028;
+      font-size: 15px;
+      margin-bottom: 2px;
+      font-family: 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+    }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 480px) {
+      body { font-size: 16px; }
+      .content { padding: 0 18px 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <img class="header-image" src="header.png" alt="">
+
+  <div class="meta">
+    <p class="label">Brainport Insider</p>
+    <p class="issue">2026年6月 &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; High Tech Campus Eindhoven</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="lang-toggle">
+    <button class="active" onclick="switchLang('zh')">繁體中文</button>
+    <button onclick="switchLang('en')">English</button>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══════════════ 繁體中文 ═══════════════ -->
+    <div class="edition zh active">
+
+      <p>上週，超過120人聚集在高科技校園（High Tech Campus）的 Student BASE，討論一個我們許多人都有感受、卻很少被公開說出口的問題：國際人才正在離開 Brainport。6月12日的 Career Compass Netherlands 活動，匯聚了學生、應屆畢業生、專業人士與雇主，坦誠面對移居荷蘭的種種現實：簽證的迷宮、讓許多新來者驚訝的荷蘭職場文化（比想像中低調許多），以及在一個不熟悉規則的國家找第一份工作的孤獨感。</p>
+
+      <p>SHEXON 的 Dr Navid Mohamadi 直接點出了核心問題：<em>「我們都知道 ASML 和飛利浦。但有多少人知道規模較小的公司？」</em>那天晚上真正討論的，不是 Brainport 是否適合發展職涯，而是人們能否在最耳熟能詳的幾個大名字之外，真正找到自己的路。荷蘭合作銀行的經濟學家 Marc Cootjans 補充道，埃因霍溫和阿姆斯特丹是荷蘭唯二經濟成長連續十年達到全國平均兩倍的地區，而且車站附近計畫新建一萬戶住宅。他留下一個耐人尋味的問題：這個地區能否成為一個讓人「想要留下來」、而不只是「在這裡工作」的地方？</p>
+
+      <p>我覺得這個問題比任何成長數字都更有意思。基礎建設在這裡。工作機會也在。但至少就我與許多外籍人士的對話來看，仍然缺少的是一條清晰的入門路徑，以及一個讓人留下來的理由。</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>就在那場活動的隔天，校園本身向大眾敞開了大門。6月13日的 HTCE 開放日，一如往常有無塵室參觀、VR 體驗、親子活動，以及飛利浦、NXP、Signify 和 Axelera AI 等公司展示他們真正在做的事。但對於剛來到這個地區的人，我特別想提的是在 HTC 1e 舉辦的國際人士博覽會（Internationals Fair）。Holland Expat Center South、Expat Spouses Initiative、Expat Housing Center、Expat Mortgages South、ABN Amro 和語言學校 Regina Coeli，全都聚集在同一個空間。如果你一直在摸索哪些機構能切實幫助外籍人士，這樣難得的機會並不常有。</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>六月初，校園內的 Fe+male Tech Heroes 大會聚焦於另一種鴻溝。6月3日，研究人員、臨床醫師、新創創辦人和投資人，共同審視了一組讓我初次看到就停下來的數字：子宮內膜異位症影響了七分之一的女性，卻只獲得4,400萬歐元的新創投資。相比之下，勃起功能障礙新創公司獲得了10億歐元。FemTechNL 認為荷蘭有條件在女性健康科技領域引領全球，並點名五家位於校園的新創：Certain、Salvia BioElectronics、Sirius Medical、VivArt-X 和 Vi Health，都已在這個領域深耕。大會結束後，Invest NL 將女性健康列為2026年的優先要務。其中兩位與談人還曾在《刺胳針》（<em>The Lancet</em>）上共同撰文，稱之為「社會的當務之急」。</p>
+
+      <p>如果你一直以為這個校園主要是晶片和半導體的天下，這值得你重新認識。這裡的社群比從外面看到的更加多元。</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>幾週前的5月21日，AI 創新中心舉辦了 AI Meetup XL，座無虛席，超過300人出席，主題是歐洲的 AI 自主性。來自 Axelera AI、Euclyd 和 Datacation 的講者，駁斥了「歐洲已在 AI 競賽中出局」的說法。他們點名的真正問題是：資金分散、採用緩慢，以及先規範、後擴規模的傾向。Euclyd 的 Bernardo Kastrup 說：<em>「歐洲在2030年之前，可以在戰略上達到相當程度的自主。這只需要意志和勇氣。」</em>所有場次的錄影都放在 AI 創新中心的網站上，有興趣的人可以深入了解。</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>校園內的夏日帳篷（Summer Tent）現在也已開放，適合非正式的午餐聚會和交流。如果你想在校園裡待一段時間、卻不需要特定理由，這是個不錯的選擇。</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>Career Compass 活動結束後，我一直在想一件事：這個地區顯然希望國際人才能夠留下來，支援組織、各種活動、住宅建設計畫都是真實存在的。但我很好奇，對於那些真正長期留下來的人，究竟是什麼造成了不同？是找到了對的工作、對的社群，還是某種更難說清楚的東西？如果你已經在這裡一段時間了，我很想知道，你會對剛來的人說什麼。</p>
+
+      <div class="signoff">
+        <strong>Chiawen Lee</strong>
+        在埃因霍溫定居超過15年的外籍人士
+      </div>
+
+    </div>
+
+    <!-- ═══════════════ English ═══════════════ -->
+    <div class="edition en">
+
+      <p>Over 120 people showed up at Student BASE on High Tech Campus last week to talk about something most of us have felt but rarely hear said out loud: international talent keeps leaving Brainport. The Career Compass Netherlands event on June 12 brought together students, graduates, professionals, and employers to go through the honest realities: the visa maze, the Dutch workplace culture that surprises a lot of newcomers with how low-key it is, the loneliness of a first job search in a country where you don't know the rules.</p>
+
+      <p>Dr Navid Mohamadi of SHEXON put the core problem plainly: <em>"We all know ASML and Philips. But how many of us know smaller-sized companies?"</em> That's the gap the evening was really about: not whether Brainport is a good place to build a career, but whether people can actually find their way in beyond the two or three names everyone already knows. Rabobank economist Marc Cootjans added that Eindhoven and Amsterdam are the only two Dutch regions where economic growth has been double the national average for a decade, and that 10,000 new homes are planned near the station. The question he left hanging: can this region become somewhere people want to stay, not just work?</p>
+
+      <p>I find that question more interesting than any of the growth numbers. The infrastructure is there. The jobs exist. What's still missing, at least for a lot of internationals I talk to, is a clear path in and a reason to stick around.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>The day after that event, the campus itself opened its doors. The HTCE Open Day on June 13 was the usual mix of cleanroom tours, VR demos, kids' activities, and companies like Philips, NXP, Signify, and Axelera AI showing what they actually do. But the part I'd highlight for anyone newer to the region: the Internationals Fair at HTC 1e. Holland Expat Center South, Expat Spouses Initiative, Expat Housing Center, Expat Mortgages South, ABN Amro, and language school Regina Coeli were all there in one place. If you've been trying to figure out which organisations actually help expats with practical things, that kind of room doesn't come together very often.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>Earlier in June, the Fe+male Tech Heroes Conference at the campus took on a different kind of gap. Researchers, clinicians, founders, and investors spent June 3 working through a number that stopped me when I first read it: endometriosis affects 1 in 7 women and has received €44M in startup funding. Erectile dysfunction startups have received €1 billion. FemTechNL argued the Netherlands is positioned to lead on women's health technology, and named five campus-based startups already building in that space: Certain, Salvia BioElectronics, Sirius Medical, VivArt-X, and Vi Health. After the conference, Invest NL named women's health a top priority for 2026. Two of the panelists had co-authored a piece in <em>The Lancet</em> calling it a "societal imperative."</p>
+
+      <p>For anyone who assumed the campus was mainly about chips and semiconductors: this is worth knowing. The community here is broader than it looks from the outside.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>A few weeks earlier, on May 21, the AI Innovation Center hosted AI Meetup XL: sold out, over 300 people. The topic was European AI sovereignty. Speakers from Axelera AI, Euclyd, and Datacation pushed back against the idea that Europe has already lost the AI race. The real problems they named were fragmented funding, slow adoption, and a tendency to regulate before scaling. Bernardo Kastrup of Euclyd said: <em>"Europe can be strategically and largely autonomous before 2030. It just requires will and courage."</em> Recordings of all the sessions are on the AI Innovation Center website if you want to go deeper.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>The Summer Tent is also open on campus now for informal lunches and meetups: worth knowing if you're looking for a lower-stakes way to spend time at the campus without needing a reason to be there.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>One thing I keep thinking about after the Career Compass event: the region clearly wants international talent to stay, and the support organisations, the events, the housing pipeline are all real. But I'm curious what actually makes the difference for the people who do stay long-term. Is it finding the right job, the right community, or something harder to name? If you've been here a while, I'd be interested in what you'd tell someone who just arrived.</p>
+
+      <div class="signoff">
+        <strong>Chiawen Lee</strong>
+        Local expat, 15+ years in Eindhoven
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.edition').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-toggle button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('.edition.' + lang).classList.add('active');
+      document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
