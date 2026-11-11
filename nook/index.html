@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5B3FD1">
+<title>Nook – find your people, start with you</title>
+<style>
+:root{
+  --bg:#F7F4FF; --card:#FFFFFF; --ink:#1E1636; --muted:#5A5075; --line:#E3DCF5;
+  --brand:#5B3FD1; --brand-ink:#FFFFFF; --soft:#EDE6FF; --accent:#FF7A6B; --accent-soft:#FFE8E4;
+  --mint:#CFF3E4; --mint-ink:#0F5A3F; --sun:#FFF1C9; --sun-ink:#6B4B00;
+  --r:20px; --shadow:0 6px 20px rgba(60,35,140,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#140F24; --card:#1F1835; --ink:#F2EEFF; --muted:#B9AEDA; --line:#34294F;
+    --brand:#9C86FF; --brand-ink:#140F24; --soft:#2B2250; --accent:#FF8E80; --accent-soft:#40232A;
+    --mint:#16392E; --mint-ink:#9BE8C6; --sun:#3C3015; --sun-ink:#FFDD8A; --shadow:none}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.app{max-width:480px;min-height:100vh;margin:0 auto;display:flex;flex-direction:column;background:var(--bg);position:relative}
+main{flex:1;padding:20px 16px 110px;outline:none}
+h1,h2,h3{line-height:1.2;margin:0}
+h1{font-size:1.7rem;letter-spacing:-.02em}
+h2{font-size:1.25rem;margin:24px 0 10px}
+h3{font-size:1.05rem}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.row{display:flex;gap:10px;align-items:center}
+.between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.15rem;color:var(--brand)}
+.logo{width:30px;height:30px;border-radius:10px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:800}
+header.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.streak{background:var(--sun);color:var(--sun-ink);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.85rem}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:14px;min-height:48px;padding:12px 18px;font-weight:700}
+.primary{background:var(--brand);color:var(--brand-ink);width:100%}
+.primary:hover{filter:brightness(1.08)}
+.secondary{background:var(--soft);color:var(--brand)}
+.ghost{background:transparent;color:var(--muted);text-decoration:underline;min-height:44px}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.moods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mood{background:var(--card);border:2px solid var(--line);color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 6px;font-weight:600}
+.mood span.e{font-size:1.8rem}
+.mood[aria-pressed=true]{border-color:var(--brand);background:var(--soft)}
+.tag{display:inline-block;background:var(--soft);color:var(--brand);border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:700}
+.tag.mint{background:var(--mint);color:var(--mint-ink)}
+.tag.warm{background:var(--accent-soft);color:var(--accent)}
+.hero{background:linear-gradient(135deg,var(--brand),#8A6BFF);color:#fff;border:0}
+.hero .muted{color:#E6DEFF}
+.hero .btn2{background:#fff;color:#3E27A8;margin-top:6px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;margin:0 -16px;padding-left:16px;padding-right:16px}
+.chip{background:var(--card);border:1.5px solid var(--line);color:var(--ink);min-height:40px;padding:8px 14px;border-radius:999px;white-space:nowrap;font-weight:600}
+.chip[aria-pressed=true]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.circle{display:flex;gap:12px}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;flex:none}
+.circle .body{flex:1;min-width:0}
+.avatars{display:flex}
+.avatars i{width:24px;height:24px;border-radius:50%;border:2px solid var(--card);margin-left:-6px;display:block}
+.avatars i:first-child{margin-left:0}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:800;flex:none}
+.num.done{background:var(--mint);color:var(--mint-ink)}
+.bubble{background:var(--soft);border-radius:18px 18px 18px 6px;padding:12px 14px;margin:6px 0}
+.bubble.me{background:var(--brand);color:var(--brand-ink);border-radius:18px 18px 6px 18px;margin-left:auto;max-width:90%}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--line);color:var(--ink);margin-bottom:8px;font-weight:500}
+.opt[aria-pressed=true]{border-color:var(--brand);background:var(--soft)}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px;min-height:84px;resize:vertical}
+progress{width:100%;height:10px;accent-color:var(--brand)}
+nav.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:5}
+nav.tabs a{flex:1;text-align:center;text-decoration:none;color:var(--muted);padding:6px 2px;border-radius:14px;font-size:.75rem;font-weight:700;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+nav.tabs a .i{font-size:1.4rem;line-height:1}
+nav.tabs a[aria-current=page]{color:var(--brand);background:var(--soft)}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-weight:600;z-index:9;max-width:90%;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.back{background:none;color:var(--brand);padding:6px 0;min-height:44px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{text-align:center;padding:12px 6px}
+.stat b{font-size:1.5rem;display:block;color:var(--brand)}
+.vals{display:flex;flex-wrap:wrap;gap:8px}
+.sr{position:absolute;left:-9999px}
+.safety{font-size:.8rem;color:var(--muted);text-align:center;margin-top:20px}
+@media (prefers-reduced-motion:no-preference){ main>*{animation:in .25s ease-out} @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}} }
+</style>
+</head>
+<body>
+<div class="app">
+  <main id="main" tabindex="-1" aria-live="polite"></main>
+  <nav class="tabs" aria-label="Main">
+    <a href="#/home" data-t="home"><span class="i" aria-hidden="true">🏡</span>Today</a>
+    <a href="#/circles" data-t="circles"><span class="i" aria-hidden="true">🫧</span>Circles</a>
+    <a href="#/move" data-t="move"><span class="i" aria-hidden="true">👋</span>First move</a>
+    <a href="#/me" data-t="me"><span class="i" aria-hidden="true">🪞</span>Me</a>
+  </nav>
+</div>
+
+<script>
+/* ---------- Mock data ---------- */
+const MOODS=[{k:'lonely',e:'🌧️',l:'Lonely'},{k:'anxious',e:'🌀',l:'Anxious'},{k:'flat',e:'😶',l:'Flat'},{k:'okay',e:'🙂',l:'Okay'},{k:'good',e:'☀️',l:'Good'},{k:'unsure',e:'🤷‍♀️',l:'Not sure'}];
+
+const TIPS={
+ lonely:{t:'Loneliness is a signal, not a flaw',b:'Feeling lonely is your brain saying “I need connection,” like hunger says “I need food.” Research on adolescents shows it is very common — and that small, low-pressure contact helps more than waiting until you feel confident.',a:'Try this 2-minute reset: name the feeling out loud (“I feel lonely right now”). Labelling emotions lowers their intensity.',src:'Based on affect-labelling research (Lieberman et al.) & adolescent loneliness studies'},
+ anxious:{t:'Slow your body first, then your thoughts',b:'When social worry spikes, your body is in alarm mode. A longer exhale than inhale calms the nervous system within a minute or two.',a:'Breathe in for 4, out for 6 — five rounds. Then pick one tiny thing to do next.',src:'Based on slow-breathing & vagal tone research'},
+ flat:{t:'Numb days still count',b:'Feeling flat is common after long stretches of isolation. Gentle “behavioural activation” — doing one small thing even when you don’t feel like it — can lift mood.',a:'Do one 5-minute thing that used to feel good: a song, a short walk, doodling.',src:'Based on behavioural activation research'},
+ okay:{t:'Use the okay days to build',b:'Okay days are the best time to take small social risks, because you have a bit of spare energy.',a:'Pick one circle to peek into today. Just looking counts.',src:'Based on “broaden-and-build” theory (Fredrickson)'},
+ good:{t:'Bank the good feeling',b:'Noticing what made today good helps your brain remember it — and makes it easier to repeat.',a:'Write one line: what went well, and who or what was part of it?',src:'Based on positive psychology “savouring” studies'},
+ unsure:{t:'“Not sure” is a real answer',b:'Mixed feelings are normal. Checking in without fixing anything is already a step toward knowing yourself.',a:'Ask: what do I need most right now — rest, company, or fun?',src:'Based on emotional granularity research'}
+};
+
+const CIRCLES=[
+ {id:'sketch',e:'🎨',n:'Sketchbook Sundays',c:'Art & Making',m:128,d:'Draw together, no skill needed. Weekly prompt: “your comfort object.”',next:'Sun 4:00 pm · online',bg:'#FFE8E4',tags:['Chill','Beginners welcome']},
+ {id:'books',e:'📚',n:'Cosy Fantasy Book Club',c:'Books',m:214,d:'One book a month, zero pressure to finish it. Memes encouraged.',next:'Thu 7:30 pm · chat',bg:'#EDE6FF',tags:['Chat-based','Small group']},
+ {id:'move',e:'🛹',n:'Skate & Scoot Girls',c:'Sports',m:46,d:'Learn tricks in a friendly local park. Helmets lent. Beginners = VIPs.',next:'Sat 11:00 am · Riverside Park',bg:'#CFF3E4',tags:['In person','Supervised']},
+ {id:'gaming',e:'🎮',n:'Co-op Quest Night',c:'Gaming',m:301,d:'Cosy co-op games (Stardew, Overcooked). Voice optional.',next:'Fri 6:00 pm · online',bg:'#FFF1C9',tags:['Voice optional','Moderated']},
+ {id:'music',e:'🎧',n:'Playlist Swap',c:'Music',m:172,d:'Trade songs that match your mood. Find your people by taste.',next:'Daily · chat',bg:'#FFE8E4',tags:['Low effort','Chat-based']},
+ {id:'mind',e:'🌱',n:'Small Wins Circle',c:'Wellbeing',m:89,d:'Share one tiny win a day. Moderated by trained peer mentors.',next:'Daily · chat',bg:'#CFF3E4',tags:['Supportive','Moderated']}
+];
+const CATS=['All','Art & Making','Books','Sports','Gaming','Music','Wellbeing'];
+
+const OPENERS={
+ sketch:['Hi! I’m new here and kind of nervous 🙈 — what do you usually draw?','Hey! I loved the “comfort object” prompt. Mine would be my blue hoodie 😂'],
+ books:['Hi! Just joined — what’s the best cosy fantasy you’ve read lately?','Hey all 👋 I haven’t finished a book in months. Any short recommendations?'],
+ move:['Hi! Total beginner here — is it okay if I just watch the first time?','Hey! Anyone else a bit nervous about the first session?'],
+ gaming:['Hi! I mostly play Stardew — anyone up for a co-op farm?','Hey 👋 I’m new, is voice chat truly optional?'],
+ music:['Hi! My song of the week is “Glimpse of Us.” What’s yours?','Hey! What’s a song you play when you need a hug?'],
+ mind:['Hi, I’m new. My small win today: I got out of bed and joined this 🌱','Hey! Today’s win: I finally replied to a message.']
+};
+
+/* ---------- State ---------- */
+const S=Object.assign({mood:null,joined:null,opener:null,sent:false,reflected:false,journal:'',streak:3,moves:0,filter:'All'},JSON.parse((()=>{try{return localStorage.getItem('nook')||'{}'}catch(e){return '{}'}})()));
+const save=()=>{try{localStorage.setItem('nook',JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- Views ---------- */
+function home(){
+  const tip=S.mood&&TIPS[S.mood];
+  return `
+  <header class="top"><div class="brand"><span class="logo" aria-hidden="true">N</span>Nook</div><span class="streak" aria-label="${S.streak} day check-in streak">🔥 ${S.streak}-day streak</span></header>
+  <h1>Hey, Maya 👋<br><span class="muted" style="font-weight:600">How are you really feeling?</span></h1>
+  <h2 class="sr">Pick your mood</h2>
+  <div class="moods" role="group" aria-label="Pick your mood" style="margin-top:16px">
+   ${MOODS.map(m=>`<button class="mood" data-mood="${m.k}" aria-pressed="${S.mood===m.k}"><span class="e" aria-hidden="true">${m.e}</span>${m.l}</button>`).join('')}
+  </div>
+  ${tip?`
+  <section class="card" style="margin-top:18px" aria-labelledby="tt">
+    <span class="tag mint">Science-backed</span>
+    <h3 id="tt" style="margin:8px 0">${tip.t}</h3>
+    <p>${tip.b}</p>
+    <div class="bubble"><b>Try this:</b> ${tip.a}</div>
+    <p class="small muted" style="margin:6px 0 0">${tip.src}</p>
+  </section>
+  <section class="card hero">
+    <h3>You don’t have to do this alone</h3>
+    <p class="muted">${S.joined?'You’re in a circle. Ready to say hi?':'Find a small group around something you already like. Takes 1 minute.'}</p>
+    <a class="btn btn2" href="${S.joined?'#/move':'#/circles'}" style="display:inline-block;text-decoration:none;text-align:center;width:100%">${S.joined?'Plan my first move →':'Find my circle →'}</a>
+  </section>`:`<p class="card muted" style="margin-top:18px">Tap a feeling to get a short, science-based tip made for how you feel right now. No wrong answers. 💜</p>`}
+  <p class="safety">Nook is for everyday support, not emergencies. If you feel unsafe or in crisis, talk to a trusted adult or contact your local helpline right away.</p>`;
+}
+
+function circles(){
+  const list=CIRCLES.filter(c=>S.filter==='All'||c.c===S.filter);
+  return `
+  <h1>Circles for you</h1>
+  <p class="muted">Small, moderated groups built around what you love. Picked from your interests: <b>drawing, music, cosy games</b>.</p>
+  <div class="chips" role="group" aria-label="Filter by interest">
+    ${CATS.map(c=>`<button class="chip" data-cat="${c}" aria-pressed="${S.filter===c}">${c}</button>`).join('')}
+  </div>
+  ${list.map(c=>`
+  <article class="card circle">
+    <div class="ico" style="background:${c.bg};" aria-hidden="true">${c.e}</div>
+    <div class="body">
+      <h3>${c.n}</h3>
+      <p class="small muted" style="margin:2px 0 6px">${c.d}</p>
+      <div class="row wrap" style="gap:6px;margin-bottom:8px">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="row between wrap">
+        <span class="small muted"><span class="avatars" aria-hidden="true"><i style="background:#FF7A6B"></i><i style="background:#5B3FD1"></i><i style="background:#2FBF8F"></i></span> ${c.m} girls · ${c.next}</span>
+      </div>
+      <button class="${S.joined===c.id?'secondary':'primary'}" style="margin-top:10px" data-join="${c.id}" ${S.joined===c.id?'aria-pressed="true"':''}>${S.joined===c.id?'✓ Joined · Plan first move':'Join this circle'}</button>
+    </div>
+  </article>`).join('')||'<p class="muted">Nothing here yet — try another interest.</p>'}`;
+}
+
+function move(){
+  const c=CIRCLES.find(x=>x.id===S.joined);
+  if(!c) return `<h1>Your first move</h1>
+   <div class="card"><p>Pick a circle first, then we’ll help you say that first hello — the hardest part, made tiny.</p>
+   <a class="btn primary" href="#/circles" style="display:block;text-decoration:none;text-align:center">Browse circles</a></div>`;
+  const ops=OPENERS[c.id];
+  if(S.sent) return `
+   <h1>You did it! 🎉</h1>
+   <p class="muted">Saying hi in <b>${c.n}</b> takes real courage.</p>
+   <div class="bubble me">${esc(S.opener)}</div>
+   <div class="card" style="margin-top:14px"><span class="tag mint">Just now</span>
+     <div class="bubble" style="margin-top:8px"><b>Jules (mentor):</b> Welcome Maya! 💜 So glad you’re here. Everyone was new once.</div>
+     <div class="bubble"><b>Priya:</b> Same here, I was nervous too! Which is your favourite?</div></div>
+   <div class="card"><h3>Now, be kind to yourself</h3><p class="muted">Whatever happens next, joining was brave. Take a moment to notice how it felt.</p>
+   <a class="btn primary" href="#/me" style="display:block;text-decoration:none;text-align:center">Reflect on it →</a></div>`;
+  return `
+   <button class="back" onclick="location.hash='#/circles'">← Circles</button>
+   <h1>Your first move</h1>
+   <p class="muted">in <b>${c.e} ${c.n}</b></p>
+   <div class="card">
+     <progress max="3" value="${S.opener?2:1}" aria-label="Progress"></progress>
+     <p class="small muted" style="margin-top:6px">Step ${S.opener?2:1} of 3</p>
+     <div class="step"><span class="num">1</span><div><h3>Take the pressure off</h3><p class="small muted">You only need <b>one</b> sentence. Studies show people respond warmly to new members far more often than we expect (the “liking gap”).</p></div></div>
+   </div>
+   <h2>Pick a starter (edit it if you like)</h2>
+   ${ops.map(o=>`<button class="opt" data-op="${esc(o)}" aria-pressed="${S.opener===o}">${esc(o)}</button>`).join('')}
+   <label for="own" class="small muted">Or write your own</label>
+   <textarea id="own" placeholder="Hi! I’m new here…">${S.opener&&!ops.includes(S.opener)?esc(S.opener):''}</textarea>
+   <p class="small muted" style="margin-top:6px">Not ready? <button class="ghost" id="later">Save it for later — I’ll remind you tomorrow</button></p>
+   <button class="primary" id="send" ${S.opener?'':'disabled style="opacity:.5"'}>Send my hello 👋</button>`;
+}
+
+function me(){
+  const c=CIRCLES.find(x=>x.id===S.joined);
+  return `
+  <h1>Me</h1>
+  <p class="muted">Feeling connected to others starts with feeling connected to yourself.</p>
+  <div class="stats">
+    <div class="card stat"><b>${S.streak}</b><span class="small muted">day streak</span></div>
+    <div class="card stat"><b>${S.joined?1:0}</b><span class="small muted">circles</span></div>
+    <div class="card stat"><b>${S.moves}</b><span class="small muted">first moves</span></div>
+  </div>
+  <h2>Tonight’s reflection</h2>
+  <div class="card">
+    <label for="j" class="small muted">${S.sent?'You said hi today. What did that take? What did you learn about yourself?':'What is one thing you did today that you’re proud of — even if it was tiny?'}</label>
+    <textarea id="j" style="margin-top:8px" placeholder="Today I…">${esc(S.journal)}</textarea>
+    <button class="primary" id="savej" style="margin-top:10px">Save to my story</button>
+    ${S.reflected?'<p class="small" style="margin:8px 0 0;color:var(--mint-ink);background:var(--mint);padding:8px 12px;border-radius:12px">💚 Saved. Writing your wins down builds self-recognition over time.</p>':''}
+  </div>
+  <h2>What I’m discovering about me</h2>
+  <div class="card"><div class="vals">
+    <span class="tag">🎨 Creative</span><span class="tag">🎧 Music lover</span><span class="tag warm">🌱 Brave when nervous</span>
+    ${S.sent?'<span class="tag mint">👋 Made the first move</span>':''}
+  </div><p class="small muted" style="margin:10px 0 0">Your strengths update as you check in and try new things.</p></div>
+  <h2>Self-connection practice</h2>
+  <div class="card"><h3>The 3-minute “friend voice”</h3><p class="muted small">Think of something you’re worried about. Now say to yourself what you’d say to a friend feeling it. Self-compassion practice is linked to lower loneliness and anxiety.</p></div>
+  ${c?`<p class="small muted">Your circle: ${c.e} ${c.n}</p>`:''}`;
+}
+
+/* ---------- Router ---------- */
+const routes={home,circles,move,me};
+function render(){
+  const k=(location.hash.replace('#/','')||'home').split('?')[0];
+  const r=routes[k]?k:'home';
+  const m=$('#main'); m.innerHTML=routes[r]();
+  document.querySelectorAll('nav.tabs a').forEach(a=>{ if(a.dataset.t===r)a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current')});
+  bind(r);
+}
+function toast(t){const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function bind(r){
+  document.querySelectorAll('[data-mood]').forEach(b=>b.onclick=()=>{S.mood=b.dataset.mood;save();render();const t=$('#tt');t&&t.scrollIntoView({behavior:'smooth',block:'center'})});
+  document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{S.filter=b.dataset.cat;save();render()});
+  document.querySelectorAll('[data-join]').forEach(b=>b.onclick=()=>{
+    if(S.joined!==b.dataset.join){S.joined=b.dataset.join;S.opener=null;S.sent=false}
+    save();toast('You joined! Let’s make saying hi easy ✨');location.hash='#/move'});
+  document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{S.opener=b.dataset.op;save();render()});
+  const own=$('#own'); if(own) own.oninput=()=>{S.opener=own.value.trim()||null;const s=$('#send');s.disabled=!S.opener;s.style.opacity=S.opener?1:.5;save()};
+  const send=$('#send'); if(send) send.onclick=()=>{S.sent=true;S.moves++;S.streak++;save();render();scrollTo(0,0)};
+  const later=$('#later'); if(later) later.onclick=()=>{toast('Reminder set for tomorrow, 4 pm 🔔');location.hash='#/home'};
+  const sj=$('#savej'); if(sj) sj.onclick=()=>{S.journal=$('#j').value;S.reflected=true;save();render()};
+}
+addEventListener('hashchange',()=>{render();scrollTo(0,0);$('#main').focus({preventScroll:true})});
+render();
+</script>
+</body>
+</html>
